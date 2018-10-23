@@ -18,7 +18,7 @@ def wczytaj_warstwy(filename):
     infile.close()
     indeks = 0
     for nr, d in enumerate(file_data):
-        if d[0] == '****':
+        if d == '****':
             indeks = nr + 1
     param = file_data[0:indeks]
     rest = file_data[indeks:]
