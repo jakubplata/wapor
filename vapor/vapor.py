@@ -12,33 +12,50 @@ from collections import defaultdict
 
 
 def wczytaj_warstwy(filename):
-    data = defaultdict(list)
+    """
+    Wczytwanie plików z formatu tekstowego dla wielu warstw do postaci listy
+    :param filename:
+    :return:
+    """
     with open(filename, 'r') as infile:
         file_data = [i.strip() for i in infile.readlines()]
     infile.close()
+    return file_data
+
+
+def parsuj_warstwy(warstwy):
     indeks = 0
-    for nr, d in enumerate(file_data):
+    for nr, d in enumerate(warstwy):
         if d == '****':
             indeks = nr + 1
-    param = file_data[0:indeks]
-    rest = file_data[indeks:]
-    rest.insert(0, '**') # uzpelnienie wartosci bazowej dla listy
-    for nr, row in enumerate(rest):
-        if row == '**' and nr < len(rest)-1:
-            key = rest[nr+1]
+    warstwy_param = warstwy[0:indeks]
+    warstwy_data = warstwy[indeks:]
+    warstwy_data.insert(0, '**') # uzpelnienie wartosci bazowej dla listy
+    return warstwy_param, warstwy_data
+
+
+def warstwy_dane_slownik(warstwy_dane):
+    data = defaultdict(list)
+    for nr, row in enumerate(warstwy_dane):
+        if row == '**' and nr < len(warstwy_dane)-1:
+            key = warstwy_dane[nr+1]
         else:
             if row != key:
                 data[key].append(row)
-    return param, data
+    return data
 
 
 def differ(items1, items2):
     return list(set(items1).difference(set(items2)))
 
 
-def porownaj_warstwy(file_old, file_new):
-    param_old, data_old = wczytaj_warstwy(file_old)
-    param_new, data_new = wczytaj_warstwy(file_new)
+def porownaj_warstwy(file_old_data, file_new_data):
+    param_old, data_old = parsuj_warstwy(file_old_data)
+    param_new, data_new = parsuj_warstwy(file_new_data)
+    data_old = warstwy_dane_slownik(data_old)
+    for k, v in data_old.items():
+        print(k, v,)
+    data_new = warstwy_dane_slownik(data_new)
     dict_diff_add = {}
     dict_diff_remove = {}
     for key, items in data_new.items():
@@ -55,4 +72,6 @@ def porownaj_warstwy(file_old, file_new):
 if __name__ == "__main__":
     f1 = '../_example_data/Warstwy_old'
     f2 = '../_example_data/Warstwy_new'
-    porownaj_warstwy(f1, f2)
+    data1 = wczytaj_warstwy(f1)
+    data2 = wczytaj_warstwy(f2)
+    porownaj_warstwy(data1, data2)
