@@ -1,19 +1,37 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from vapor.vapor import wczytaj_warstwy, porownaj_warstwy, differ, parsuj_warstwy, warstwy_dane_slownik
+from vapor.vapor import *
 
 FILE_OLD = '../_example_data/Warstwy_old'
 FILE_NEW = '../_example_data/Warstwy_new'
 FILE_READ = '../_example_data/file_read.txt'
 FILE_READ_EMPTY = '../_example_data/file_read_empty.txt'
 FILE_READ_CONTENT = ['it is', 'simple test file', '', 'check']
+DATA_OLD = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
+                        '5.66443560667665E+0006  7.57924025966969E+0006       0  0.0000 _',
+                        '0   20  5.66443560667665E+0006  7.57924025966969E+0006  '
+                        '5.66443204588646E+0006  7.57924876935471E+0006       0  0.0000 _',
+                        '0   20  5.66443204588646E+0006  7.57924876935471E+0006  '
+                        '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']}
+DATA_NEW = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
+                        '5.66443560667665E+0006  7.57924025966969E+0006       0  0.0000 _',
+                        '0   20  5.66443560667665E+0006  7.57924025966969E+0006  '
+                        '5.66443204588646E+0006  7.57924876935471E+0006       0  0.0000 _',
+                        '0   20  5.66443204588646E+0006  7.57924876935471E+0006  '
+                        '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _',
+                        '0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
+                        '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']}
 CONTENT = ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
            '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']
-PARSER_CONTENT = wczytaj_warstwy('../_example_data/file_parser.txt')
-PARSED_PRAMS, PARSED_DATA = parsuj_warstwy(PARSER_CONTENT)
+PARSER_CONTENT = ['it is', 'example file for', 'parser', '****',
+                  'it divides', 'file for', 'params', '**', 'and data', '**']
 PARSER_PARAMS = ['it is', 'example file for', 'parser', '****']
 PARSER_DATA = ['**', 'it divides', 'file for', 'params', '**', 'and data', '**']
+
+SLOWNIK_DATA = {'TEST 23': ['0 256 532', '0 256 896'], 'LINIE 121': ['0 456 789']}
+WRITE_DATA = ['to write', '**', 'in a', 'test file', '**']
+PARAMS_DATA = ['it is', 'test data', '****']
 
 
 def test_wczytaj_warstwy():
@@ -37,18 +55,30 @@ def test_parsuj_warstwy_dane():
 
 
 def test_warstwy_dane_slownik():
-    dict = warstwy_dane_slownik(PARSED_DATA)
+    dict = warstwy_dane_slownik(PARSER_DATA)
     assert dict == {'it divides': ['file for', 'params'], 'and data': ['**']}
-
-
-def test_porownaj_warstwy_add():
-    data_old = wczytaj_warstwy(FILE_OLD)
-    data_new = wczytaj_warstwy(FILE_NEW)
-    diff_add, _ = porownaj_warstwy(data_old, data_new)
-    assert diff_add['TEST 23'][0] == CONTENT[0]
 
 
 def test_differ():
     test_items1 = set(["A", "B", "C"])
     test_items2 = set(['A', 'B'])
     assert ['C'] == differ(test_items1, test_items2)
+
+
+def test_porownaj_warstwy():
+    diff_add = porownaj_warstwy(DATA_OLD, DATA_NEW)
+    assert diff_add['TEST 23'][0] == CONTENT[0]
+
+
+def test_slownik_to_list():
+    lista = slownik_to_list(SLOWNIK_DATA)
+    assert lista == ['TEST 23', '0 256 532', '0 256 896', '**', 'LINIE 121', '0 456 789', '**']
+
+
+def test_zapis_danych(tmpdir):
+    file = tmpdir.join('ADD.txt')
+    zapis_danych(file.strpath, PARAMS_DATA, WRITE_DATA)
+    assert file.read() == 'it is\ntest data\n****\nto write\n**\nin a\ntest file\n**'
+
+
+

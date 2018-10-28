@@ -49,29 +49,44 @@ def differ(items1, items2):
     return list(set(items1).difference(set(items2)))
 
 
-def porownaj_warstwy(file_old_data, file_new_data):
-    param_old, data_old = parsuj_warstwy(file_old_data)
-    param_new, data_new = parsuj_warstwy(file_new_data)
-    data_old = warstwy_dane_slownik(data_old)
-    for k, v in data_old.items():
-        print(k, v,)
-    data_new = warstwy_dane_slownik(data_new)
-    dict_diff_add = {}
-    dict_diff_remove = {}
-    for key, items in data_new.items():
+def porownaj_warstwy(data_first, data_second):
+    dict_diff = {}
+    for key, items in data_second.items():
         try:
-            items_old = data_old[key]
+            items_first = data_first[key]
         except KeyError:
-            print('W pierwotnych danych brak warstwy: {key}'.format(key=key))
-        else:
-            dict_diff_add[key] = differ(items, items_old)
-            dict_diff_remove[key] = differ(items_old, items)
-    return dict_diff_add, dict_diff_remove
+            items_first = []
+        dict_diff[key] = differ(items, items_first)
+    return dict_diff
+
+
+def slownik_to_list(data):
+    dane_lista = []
+    for nazwa_warstw, data_list in data.items():
+        dane_lista.append(nazwa_warstw)
+        for element in data_list:
+            dane_lista.append(element)
+        dane_lista.append('**')
+    return dane_lista
+
+
+def zapis_danych(filepath, params, data):
+    warstwy = params + data
+    with open(filepath, 'w') as outfile:
+        lines = '\n'.join(warstwy)
+        outfile.write(lines)
+    outfile.close()
 
 
 if __name__ == "__main__":
-    f1 = '../_example_data/Warstwy_old'
-    f2 = '../_example_data/Warstwy_new'
-    data1 = wczytaj_warstwy(f1)
-    data2 = wczytaj_warstwy(f2)
-    porownaj_warstwy(data1, data2)
+    file_old = '../_example_data/Warstwy_old'
+    file_new = '../_example_data/Warstwy_new'
+    data_old = wczytaj_warstwy(file_old)
+    data_new = wczytaj_warstwy(file_new)
+    params_old, data_old = parsuj_warstwy(data_old)
+    params_new, data_new = parsuj_warstwy(data_new)
+    data_old = warstwy_dane_slownik(data_old)
+    data_new = warstwy_dane_slownik(data_new)
+    diff_add = porownaj_warstwy(data_old, data_new)
+    diff = slownik_to_list(diff_add)
+    zapis_danych('./test.txt', params_new, diff)
