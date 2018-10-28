@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d992057-a65b-4b50-90a7-dd40c2d4d9a7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vapor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vapor.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_vapor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_vapor_pytest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vapor/vapor.py" beforeDir="false" afterPath="$PROJECT_DIR$/vapor/vapor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_vapor_pytest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_vapor_pytest.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,13 +39,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="py" value="3338" />
+          <entry key="py" value="3456" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="Python" value="3338" />
+          <entry key="Python" value="3456" />
         </counts>
       </usages-collector>
     </session>
@@ -57,17 +55,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/tests_vapor_pytest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+            <state relative-caret-position="261">
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
               <folding>
                 <element signature="e#25#38#0" expanded="true" />
-                <marker date="1540736626381" expanded="true" signature="928:929" ph="..." />
-                <marker date="1540736626381" expanded="true" signature="1269:1395" ph="..." />
-                <marker date="1540736626381" expanded="true" signature="1615:1617" ph="..." />
-                <marker date="1540736626381" expanded="true" signature="1635:1640" ph="..." />
+                <marker date="1540737545148" expanded="true" signature="844:845" ph="..." />
+                <marker date="1540737545148" expanded="true" signature="960:1029" ph="..." />
+                <marker date="1540737545148" expanded="true" signature="1292:1418" ph="..." />
+                <marker date="1540737545148" expanded="true" signature="1636:1638" ph="..." />
+                <marker date="1540737545148" expanded="true" signature="1656:1661" ph="..." />
               </folding>
             </state>
           </provider>
@@ -82,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vapor/vapor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+            <state relative-caret-position="1139">
+              <caret line="67" column="60" lean-forward="true" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
               <folding>
                 <marker date="1540736801791" expanded="true" signature="582:725" ph="..." />
                 <marker date="1540736801791" expanded="true" signature="1115:1347" ph="..." />
@@ -121,8 +120,8 @@
         <option value="$PROJECT_DIR$/tests/test_vapor.pyi" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/tests/tests_vapor.py" />
-        <option value="$PROJECT_DIR$/tests/tests_vapor_pytest.py" />
         <option value="$PROJECT_DIR$/vapor/vapor.py" />
+        <option value="$PROJECT_DIR$/tests/tests_vapor_pytest.py" />
       </list>
     </option>
   </component>
@@ -186,28 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for tests_vapor_pytest.test_warstwy_dane_slownik">
-    <configuration name="tests_vapor" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="vapor" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="F:\PROGRAMOWANIE\PROJEKTY\vapor\tests\tests_vapor_pytest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.pytest for tests_vapor_pytest.test_porownaj_warstwy_add">
     <configuration name="vapor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="vapor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -229,6 +207,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for tests_vapor_pytest.test_porownaj_warstwy_add" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="vapor" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests_vapor_pytest.test_porownaj_warstwy_add&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for tests_vapor_pytest.test_warstwy_dane_slownik" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="vapor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -241,6 +234,21 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;tests_vapor_pytest.test_warstwy_dane_slownik&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for tests_vapor_pytest.test_wczytaj_warstwy_empty_file" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="vapor" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests_vapor_pytest.test_wczytaj_warstwy_empty_file&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -260,17 +268,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.tests_vapor" />
       <item itemvalue="Python.vapor" />
       <item itemvalue="Python tests.pytest in tests_vapor_pytest.py" />
       <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_warstwy_dane_slownik" />
+      <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_wczytaj_warstwy_empty_file" />
+      <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_porownaj_warstwy_add" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_porownaj_warstwy_add" />
+        <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_wczytaj_warstwy_empty_file" />
         <item itemvalue="Python tests.pytest for tests_vapor_pytest.test_warstwy_dane_slownik" />
         <item itemvalue="Python.vapor" />
         <item itemvalue="Python tests.pytest in tests_vapor_pytest.py" />
-        <item itemvalue="Python.tests_vapor" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +303,9 @@
     </history-entry>
     <history-entry file="pytest_for_tests_vapor_pytest_test_warstwy_dane_slownik - 2018.10.28 at 15h 23m 51s.xml">
       <configuration name="pytest for tests_vapor_pytest.test_warstwy_dane_slownik" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_for_tests_vapor_pytest_test_wczytaj_warstwy_empty_file - 2018.10.28 at 15h 31m 35s.xml">
+      <configuration name="pytest for tests_vapor_pytest.test_wczytaj_warstwy_empty_file" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -344,28 +357,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/tests_vapor_pytest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-          <folding>
-            <element signature="e#25#38#0" expanded="true" />
-            <marker date="1540736626381" expanded="true" signature="928:929" ph="..." />
-            <marker date="1540736626381" expanded="true" signature="1269:1395" ph="..." />
-            <marker date="1540736626381" expanded="true" signature="1615:1617" ph="..." />
-            <marker date="1540736626381" expanded="true" signature="1635:1640" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vapor/vapor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+        <state relative-caret-position="1139">
+          <caret line="67" column="60" lean-forward="true" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
           <folding>
             <marker date="1540736801791" expanded="true" signature="582:725" ph="..." />
             <marker date="1540736801791" expanded="true" signature="1115:1347" ph="..." />
             <marker date="1540736801791" expanded="true" signature="1374:1430" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/tests_vapor_pytest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+            <marker date="1540737545148" expanded="true" signature="844:845" ph="..." />
+            <marker date="1540737545148" expanded="true" signature="960:1029" ph="..." />
+            <marker date="1540737545148" expanded="true" signature="1292:1418" ph="..." />
+            <marker date="1540737545148" expanded="true" signature="1636:1638" ph="..." />
+            <marker date="1540737545148" expanded="true" signature="1656:1661" ph="..." />
           </folding>
         </state>
       </provider>
