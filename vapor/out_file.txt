@@ -1,0 +1,30 @@
+***
+Typ warstwy=L
+Nazwa warstwy=TEST
+Pe³na nazwa warstwy=
+**
+Numer podwarstwy=0
+Nazwa podwarstwy=
+Pe³na nazwa podwarstwy=
+Kolor=000000
+Kolor dla wyrysu=000000
+Widoczna=T
+Nie podlega obcinaniu=N
+Dolny warunek wyœwietlania= 0.00000000000000E+0000
+Górny warunek wyœwietlania= 0.00000000000000E+0000
+Gruboœæ= 0.00000000000000E+0000
+Przeskalowanie gruboœci 1:500= 5.00000000000000E-0001
+Przeskalowanie gruboœci 1:1000= 1.00000000000000E+0000
+Przeskalowanie gruboœci 1:2000= 2.00000000000000E+0000
+Przeskalowanie gruboœci 1:5000= 5.00000000000000E+0000
+Bez polilinii=N
+Wspó³rzêdna Z=0
+Typ linii=1
+Gruboœæ ekranowa=1
+Mno¿nik= 1.00000000000000E+0000
+Gruboœæ linii cienkiej= 0.00000000000000E+0000
+Gruboœæ linii grubej= 0.00000000000000E+0000
+****
+TEST 23
+0   20  5.66444643561727E+0006  7.57924543273049E+0006  5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _
+**

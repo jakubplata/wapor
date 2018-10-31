@@ -9,7 +9,14 @@ Dane które zostały dodane oraz dane które zostały usunięte.
 """
 
 from collections import defaultdict
+import sys
 
+HELPTEXT = """
+W celu uruchomienia programu w wierszu poleceń należy podać po nazwie skryptu, nazwy dwóch plików wejściowych
+pierwotny oraz aktualny a także nazwę pliku wyjściowego
+Przykład użycia:
+>>> python vapor.py ./Warstwy_old ./Warstwy_new ./out.txt
+"""
 
 def wczytaj_warstwy(filename):
     """
@@ -78,15 +85,23 @@ def zapis_danych(filepath, params, data):
     outfile.close()
 
 
-if __name__ == "__main__":
-    file_old = '../_example_data/Warstwy_old'
-    file_new = '../_example_data/Warstwy_new'
-    data_old = wczytaj_warstwy(file_old)
-    data_new = wczytaj_warstwy(file_new)
+def main(*args):
+    f_old, f_new, f_out = args[1:]
+    data_old = wczytaj_warstwy(f_old)
+    data_new = wczytaj_warstwy(f_new)
     params_old, data_old = parsuj_warstwy(data_old)
     params_new, data_new = parsuj_warstwy(data_new)
     data_old = warstwy_dane_slownik(data_old)
     data_new = warstwy_dane_slownik(data_new)
     diff_add = porownaj_warstwy(data_old, data_new)
     diff = slownik_to_list(diff_add)
-    zapis_danych('./test.txt', params_new, diff)
+    zapis_danych(f_out, params_new, diff)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print(HELPTEXT)
+    else:
+        main(*sys.argv)
+        print('Koniec!')
+
