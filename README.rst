@@ -11,4 +11,4 @@ danych w formacie tekstowym dla wielu warstw
 
 Sposób użycia z wiersza poleceń::
 	
-	>>>pyhton vapor.py ./Warstwy_old ./Warstwy_new ./out.txt
+	>>>python vapor.py ./Warstwy_old ./Warstwy_new ./out.txt
