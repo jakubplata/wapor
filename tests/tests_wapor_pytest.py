@@ -3,10 +3,10 @@
 import pytest
 from wapor.wapor import *
 
-FILE_OLD = '../_example_data/Warstwy_old'
-FILE_NEW = '../_example_data/Warstwy_new'
-FILE_READ = '../_example_data/file_read.txt'
-FILE_READ_EMPTY = '../_example_data/file_read_empty.txt'
+FILE_OLD = './_example_data/Warstwy_old'
+FILE_NEW = './_example_data/Warstwy_new'
+FILE_READ = './_example_data/file_read.txt'
+FILE_READ_EMPTY = './_example_data/file_read_empty.txt'
 FILE_READ_CONTENT = ['it is', 'simple test file', '', 'check']
 DATA_OLD = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
                         '5.66443560667665E+0006  7.57924025966969E+0006       0  0.0000 _',

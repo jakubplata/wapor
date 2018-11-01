@@ -1,0 +1,10 @@
+it is
+example file for
+parser
+****
+it divides
+file for
+params
+**
+and data
+**
