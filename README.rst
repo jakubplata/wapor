@@ -1,5 +1,5 @@
 ============================
-Aplikacja vapor
+Aplikacja wapor
 ============================
 
 Projekt ten ma na celu umożliwienie porównywania ze sobą warstw programu EwMapa.
@@ -11,4 +11,4 @@ danych w formacie tekstowym dla wielu warstw
 
 Sposób użycia z wiersza poleceń::
 	
-	>>>python vapor.py ./Warstwy_old ./Warstwy_new ./out.txt
+	>>>python wapor.py ./Warstwy_old ./Warstwy_new ./out.txt

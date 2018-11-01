@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from vapor.vapor import *
+from wapor.wapor import *
 
 FILE_OLD = '../_example_data/Warstwy_old'
 FILE_NEW = '../_example_data/Warstwy_new'
@@ -26,6 +26,7 @@ CONTENT = ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
            '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']
 PARSER_CONTENT = ['it is', 'example file for', 'parser', '****',
                   'it divides', 'file for', 'params', '**', 'and data', '**']
+PARSER_CONTENT_ERR = PARSER_CONTENT[0:3] + PARSER_CONTENT[4:]
 PARSER_PARAMS = ['it is', 'example file for', 'parser', '****']
 PARSER_DATA = ['**', 'it divides', 'file for', 'params', '**', 'and data', '**']
 
@@ -52,6 +53,11 @@ def test_parsuj_warstwy_parametry():
 def test_parsuj_warstwy_dane():
     _, data = parsuj_warstwy(PARSER_CONTENT)
     assert data == PARSER_DATA
+
+
+def test_parsuj_warstwy_err():
+    with pytest.raises(ValueError):
+        params, data = parsuj_warstwy(PARSER_CONTENT_ERR)
 
 
 def test_warstwy_dane_slownik():
