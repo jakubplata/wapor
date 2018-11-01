@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+from tests.static import SLOWNIK_DATA
 from wapor.wapor import *
 
 FILE_OLD = './_example_data/Warstwy_old'
@@ -30,7 +31,7 @@ PARSER_CONTENT_ERR = PARSER_CONTENT[0:3] + PARSER_CONTENT[4:]
 PARSER_PARAMS = ['it is', 'example file for', 'parser', '****']
 PARSER_DATA = ['**', 'it divides', 'file for', 'params', '**', 'and data', '**']
 
-SLOWNIK_DATA = {'TEST 23': ['0 256 532', '0 256 896'], 'LINIE 121': ['0 456 789']}
+
 WRITE_DATA = ['to write', '**', 'in a', 'test file', '**']
 PARAMS_DATA = ['it is', 'test data', '****']
 
@@ -74,6 +75,11 @@ def test_differ():
 def test_porownaj_warstwy():
     diff_add = porownaj_warstwy(DATA_OLD, DATA_NEW)
     assert diff_add['TEST 23'][0] == CONTENT[0]
+
+
+def test_selektor_danych():
+    sd = selektor_danych(SLOWNIK_DATA, ['TEST 23'])
+    assert sd == {'TEST 23': ['0 256 532', '0 256 896']}
 
 
 def test_slownik_to_list():

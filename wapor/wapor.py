@@ -14,6 +14,7 @@ Dane które zostały dodane oraz dane które zostały usunięte.
 """
 
 from collections import defaultdict
+from copy import deepcopy
 import sys
 
 HELPTEXT = """
@@ -91,6 +92,24 @@ def porownaj_warstwy(data_first, data_second):
     return dict_diff
 
 
+def selektor_danych(data, selektor):
+    """
+    Możliwość wybrania danych tylko dla części warstw, selektor zawiera listę
+    warstw które mają pozostać
+    :param data:
+    :param selektor:
+    :return:
+    """
+    copy_data = deepcopy(data)
+    if len(selektor) > 0:
+        for nazwa_warstw, data_list in data.items():
+            if nazwa_warstw not in selektor:
+                del copy_data[nazwa_warstw]
+        return copy_data
+    else:
+        return data
+
+
 def slownik_to_list(data):
     """
     Przetworzenie słownika z danymi z warstw na listę
@@ -98,7 +117,6 @@ def slownik_to_list(data):
     :param data:
     :return:
     """
-    #TODO dodać możliwość wyboru warstw
     dane_lista = []
     for nazwa_warstw, data_list in data.items():
         dane_lista.append(nazwa_warstw)
