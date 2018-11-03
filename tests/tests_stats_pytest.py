@@ -9,4 +9,7 @@ def test_data_count():
     assert count == [('TEST 23', 2), ('LINIE 121', 1)]
 
 
+def test_sum_elements():
+    total = sum_elements(SLOWNIK_DATA)
+    assert total == 3
 

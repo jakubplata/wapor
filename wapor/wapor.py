@@ -15,14 +15,15 @@ Dane które zostały dodane oraz dane które zostały usunięte.
 
 from collections import defaultdict
 from copy import deepcopy
+import os
 import sys
 
 HELPTEXT = """
 W celu uruchomienia programu w wierszu poleceń należy podać
-po nazwie skryptu, nazwy dwóch plików wejściowych
-pierwotny oraz aktualny a także nazwę pliku wyjściowego
+po nazwie skryptu, ścieżkę do folderu zawierającego pliki
+wejściowe: Warstwy_old oraz Warstwy_new
 Przykład użycia:
->>> python wapor.py ./Warstwy_old ./Warstwy_new ./out.txt
+>>> python wapor.py ./data
 """
 
 
@@ -143,8 +144,10 @@ def zapis_danych(filepath, params, data):
     outfile.close()
 
 
-def main(*args):
-    f_old, f_new, f_out = args[1:]
+def main(data_path):
+    path = data_path
+    f_old = os.path.join(path, 'Warstwy_old')
+    f_new = os.path.join(path, 'Warstwy_new')
     data_old = wczytaj_warstwy(f_old)
     data_new = wczytaj_warstwy(f_new)
     try:
@@ -158,14 +161,17 @@ def main(*args):
     data_old = warstwy_dane_slownik(data_old)
     data_new = warstwy_dane_slownik(data_new)
     diff_add = porownaj_warstwy(data_old, data_new)
-    diff = slownik_to_list(diff_add)
-    zapis_danych(f_out, params_new, diff)
+    diff_remove = porownaj_warstwy(data_new, data_old)
+    diff_add_zapis = slownik_to_list(diff_add)
+    diff_remove_zapis = slownik_to_list(diff_remove)
+    zapis_danych('./DODANE.txt', params_new, diff_add_zapis)
+    zapis_danych('./USUNIETE.txt', params_old, diff_remove_zapis)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 2:
         print(HELPTEXT)
     else:
-        main(*sys.argv)
+        main(sys.argv[1])
         print('Koniec!')
 
