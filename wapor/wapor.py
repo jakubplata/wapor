@@ -66,7 +66,7 @@ def warstwy_dane_slownik(warstwy_dane):
         else:
             if row != key:
                 data[key].append(row)
-    return data
+    return dict(data) # defaultdict w przypadku braku klucza zwraca wartość domyślną (pusta lista)
 
 
 def differ(items1, items2):
@@ -84,13 +84,15 @@ def porownaj_warstwy(data_first, data_second):
     :return:
     """
     dict_diff = {}
+    layers = []
     for key, items in data_second.items():
         try:
             items_first = data_first[key]
         except KeyError:
+            layers.append(key)
             items_first = []
         dict_diff[key] = differ(items, items_first)
-    return dict_diff
+    return dict_diff, layers
 
 
 def selektor_danych(data, selektor):
@@ -144,28 +146,43 @@ def zapis_danych(filepath, params, data):
     outfile.close()
 
 
+def out_display(header, data):
+    """
+    Wyświetalnie danych na ekranie, dla użytkownika
+    :param header:
+    :param data:
+    :return:
+    """
+    print(header)
+    for row in data:
+        print(row)
+
+
 def main(data_path):
     path = data_path
     f_old = os.path.join(path, 'Warstwy_old')
     f_new = os.path.join(path, 'Warstwy_new')
-    data_old = wczytaj_warstwy(f_old)
-    data_new = wczytaj_warstwy(f_new)
+    d_old = wczytaj_warstwy(f_old)
+    d_new = wczytaj_warstwy(f_new)
     try:
-        params_old, data_old = parsuj_warstwy(data_old)
+        params_old, data_old = parsuj_warstwy(d_old)
     except AttributeError as e:
         print(str(e) + f_old)
     try:
-        params_new, data_new = parsuj_warstwy(data_new)
+        params_new, data_new = parsuj_warstwy(d_new)
     except AttributeError as e:
         print(str(e) + f_new)
-    data_old = warstwy_dane_slownik(data_old)
-    data_new = warstwy_dane_slownik(data_new)
-    diff_add = porownaj_warstwy(data_old, data_new)
-    diff_remove = porownaj_warstwy(data_new, data_old)
+    data_old_dict = warstwy_dane_slownik(data_old)
+    data_new_dict = warstwy_dane_slownik(data_new)
+    diff_add, layer_add = porownaj_warstwy(data_old_dict, data_new_dict)
+    diff_remove, layer_remove = porownaj_warstwy(data_new_dict, data_old_dict)
     diff_add_zapis = slownik_to_list(diff_add)
     diff_remove_zapis = slownik_to_list(diff_remove)
     zapis_danych('./DODANE.txt', params_new, diff_add_zapis)
     zapis_danych('./USUNIETE.txt', params_old, diff_remove_zapis)
+    description = 'Warstwy występujące tylko w %s katalogu:'
+    out_display(description % 'NOWYM', layer_add)
+    out_display(description % 'STARYM', layer_remove)
 
 
 if __name__ == "__main__":

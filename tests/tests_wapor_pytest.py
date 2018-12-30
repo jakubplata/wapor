@@ -22,7 +22,10 @@ DATA_NEW = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006 
                         '0   20  5.66443204588646E+0006  7.57924876935471E+0006  '
                         '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _',
                         '0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
-                        '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']}
+                        '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _'],
+            'TEST 121': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
+                        '5.66443560667665E+0006  7.57924025966969E+0006       0  0.0000 _'],
+            'TEST2 23': []}
 CONTENT = ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
            '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']
 PARSER_CONTENT = ['it is', 'example file for', 'parser', '****',
@@ -73,8 +76,13 @@ def test_differ():
 
 
 def test_porownaj_warstwy():
-    diff_add = porownaj_warstwy(DATA_OLD, DATA_NEW)
+    diff_add, _ = porownaj_warstwy(DATA_OLD, DATA_NEW)
     assert diff_add['TEST 23'][0] == CONTENT[0]
+
+
+def test_porownaj_warstwy_braki():
+    _, diff_layer = porownaj_warstwy(DATA_OLD, DATA_NEW)
+    assert diff_layer == ['TEST 121', 'TEST2 23']
 
 
 def test_selektor_danych():

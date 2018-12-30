@@ -10,10 +10,12 @@ W związku z czym utworzyłem to proste narzędzie, które umożliwa porównanie
 danych w formacie tekstowym dla wielu warstw
 
 Folder wejściowy powinien zawierać dwa pliki:
+
 - Warstwy_old
 - Warstwy_new
 
 wynikiem działania aplikacji będą dwa pliki:
+
 - DODANE.txt
 - USUNIETE.txt
 
