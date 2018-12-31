@@ -22,3 +22,8 @@ wynikiem działania aplikacji będą dwa pliki:
 Sposób użycia z wiersza poleceń::
 	
 	>>>python wapor.py ./data
+
+W przypadku wystąpienia wyjątków, które nie zostały obsłużone
+wszelkie informacje trafią do pliku \*.log
+
+wapory - *"wyziewy, opary"* - gdyby ktoś był ciekaw skąd nazwa

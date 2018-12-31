@@ -15,8 +15,10 @@ Dane które zostały dodane oraz dane które zostały usunięte.
 
 from collections import defaultdict
 from copy import deepcopy
+import logging
 import os
 import sys
+import traceback
 
 HELPTEXT = """
 W celu uruchomienia programu w wierszu poleceń należy podać
@@ -66,7 +68,7 @@ def warstwy_dane_slownik(warstwy_dane):
         else:
             if row != key:
                 data[key].append(row)
-    return dict(data) # defaultdict w przypadku braku klucza zwraca wartość domyślną (pusta lista)
+    return dict(data) # defaultdict w przypadku braku klucza zwraca wartość domyślną pusta lista
 
 
 def differ(items1, items2):
@@ -158,7 +160,24 @@ def out_display(header, data):
         print(row)
 
 
+def handler(exectype, value, tb):
+    """
+    Obsługa wszelkiego rodzaju wyjątków, zapisywanych do pliku .log
+    :param exectype:
+    :param value:
+    :param tb:
+    :return:
+    """
+    log = logging
+    log.basicConfig(filename='./wapor.log', level=log.DEBUG, format='%(asctime)s %(message)s')
+    log.critical('Error info')
+    log.critical('Type: %s' % exectype)
+    log.critical('Value: %s' % value)
+    log.critical('Traceback: %s' % ''.join(traceback.format_tb(tb)))
+
+
 def main(data_path):
+    sys.excepthook = handler
     path = data_path
     f_old = os.path.join(path, 'Warstwy_old')
     f_new = os.path.join(path, 'Warstwy_new')
