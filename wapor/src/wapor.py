@@ -1,32 +1,6 @@
 # -*- coding: utf-8 -*-
-
-"""
-Aplikacja wapor [Warstwy Porównanie] porównuje
-ze sobą dwa katalogi warstwy [eksport do formatu
-tekstowego wielu warstw] programu EwMapa
-w celu stworzenia plików zawierających różnice.
-Dane które zostały dodane oraz dane które zostały usunięte.
-
-#Postać eksportu z programu EwMapa:
-- współrzędnych z pełną precyzją
-- eksport operacji operatów
-- eksport parametrów warstw i podwarstw
-"""
-
 from collections import defaultdict
 from copy import deepcopy
-import logging
-import os
-import sys
-import traceback
-
-HELPTEXT = """
-W celu uruchomienia programu w wierszu poleceń należy podać
-po nazwie skryptu, ścieżkę do folderu zawierającego pliki
-wejściowe: Warstwy_old oraz Warstwy_new
-Przykład użycia:
->>> python wapor.py ./data
-"""
 
 
 def wczytaj_warstwy(filename):
@@ -148,66 +122,4 @@ def zapis_danych(filepath, params, data):
     outfile.close()
 
 
-def out_display(header, data):
-    """
-    Wyświetalnie danych na ekranie, dla użytkownika
-    :param header:
-    :param data:
-    :return:
-    """
-    print(header)
-    for row in data:
-        print(row)
-
-
-def handler(exectype, value, tb):
-    """
-    Obsługa wszelkiego rodzaju wyjątków, zapisywanych do pliku .log
-    :param exectype:
-    :param value:
-    :param tb:
-    :return:
-    """
-    log = logging
-    log.basicConfig(filename='./wapor.log', level=log.DEBUG, format='%(asctime)s %(message)s')
-    log.critical('Error info')
-    log.critical('Type: %s' % exectype)
-    log.critical('Value: %s' % value)
-    log.critical('Traceback: %s' % ''.join(traceback.format_tb(tb)))
-
-
-def main(data_path):
-    sys.excepthook = handler
-    path = data_path
-    f_old = os.path.join(path, 'Warstwy_old')
-    f_new = os.path.join(path, 'Warstwy_new')
-    d_old = wczytaj_warstwy(f_old)
-    d_new = wczytaj_warstwy(f_new)
-    try:
-        params_old, data_old = parsuj_warstwy(d_old)
-    except AttributeError as e:
-        print(str(e) + f_old)
-    try:
-        params_new, data_new = parsuj_warstwy(d_new)
-    except AttributeError as e:
-        print(str(e) + f_new)
-    data_old_dict = warstwy_dane_slownik(data_old)
-    data_new_dict = warstwy_dane_slownik(data_new)
-    diff_add, layer_add = porownaj_warstwy(data_old_dict, data_new_dict)
-    diff_remove, layer_remove = porownaj_warstwy(data_new_dict, data_old_dict)
-    diff_add_zapis = slownik_to_list(diff_add)
-    diff_remove_zapis = slownik_to_list(diff_remove)
-    zapis_danych('./DODANE.txt', params_new, diff_add_zapis)
-    zapis_danych('./USUNIETE.txt', params_old, diff_remove_zapis)
-    description = 'Warstwy występujące tylko w %s katalogu:'
-    out_display(description % 'NOWYM', layer_add)
-    out_display(description % 'STARYM', layer_remove)
-
-
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print(HELPTEXT)
-    else:
-        main(sys.argv[1])
-        print('Koniec!')
 

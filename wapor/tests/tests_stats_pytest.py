@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from wapor.stats import *
-from tests.static import SLOWNIK_DATA
+from wapor.src.stats import *
+from wapor.tests.static import SLOWNIK_DATA
 
 
 def test_data_count():

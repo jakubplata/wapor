@@ -9,10 +9,12 @@ w ramach kolejnych aktulizacji danych dla projektu.
 W związku z czym utworzyłem to proste narzędzie, które umożliwa porównanie
 danych w formacie tekstowym dla wielu warstw
 
-Folder wejściowy powinien zawierać dwa pliki:
+Folder wejściowy powinien zawierać dwa folder:
 
-- Warstwy_old
-- Warstwy_new
+- old
+- new
+
+w przypadku porównywania warstw, każdy z katalogów powinien zawierać plik "Warstwy"
 
 wynikiem działania aplikacji będą dwa pliki:
 
@@ -21,7 +23,7 @@ wynikiem działania aplikacji będą dwa pliki:
 
 Sposób użycia z wiersza poleceń::
 	
-	>>>python wapor.py ./data
+	>>>python3 wapor_app.py ./data
 
 W przypadku wystąpienia wyjątków, które nie zostały obsłużone
 wszelkie informacje trafią do pliku \*.log

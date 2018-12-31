@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from tests.static import SLOWNIK_DATA
-from wapor.wapor import *
+from wapor.tests.static import SLOWNIK_DATA
+from wapor.src.wapor import *
 
-FILE_OLD = './_example_data/Warstwy_old'
-FILE_NEW = './_example_data/Warstwy_new'
 FILE_READ = './_example_data/file_read.txt'
 FILE_READ_EMPTY = './_example_data/file_read_empty.txt'
 FILE_READ_CONTENT = ['it is', 'simple test file', '', 'check']
@@ -33,8 +31,6 @@ PARSER_CONTENT = ['it is', 'example file for', 'parser', '****',
 PARSER_CONTENT_ERR = PARSER_CONTENT[0:3] + PARSER_CONTENT[4:]
 PARSER_PARAMS = ['it is', 'example file for', 'parser', '****']
 PARSER_DATA = ['**', 'it divides', 'file for', 'params', '**', 'and data', '**']
-
-
 WRITE_DATA = ['to write', '**', 'in a', 'test file', '**']
 PARAMS_DATA = ['it is', 'test data', '****']
 
