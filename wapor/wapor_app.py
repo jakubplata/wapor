@@ -18,7 +18,9 @@ import logging
 import os
 import sys
 import traceback
+from src.basic import *
 from src.wapor import *
+
 #from wapor.src.wapor import *
 
 HELPTEXT = """
@@ -64,11 +66,11 @@ def war_por(path, out_path):
     d_old = wczytaj_warstwy(f_old)
     d_new = wczytaj_warstwy(f_new)
     try:
-        params_old, data_old = parsuj_warstwy(d_old)
+        params_old, data_old = parsuj_dane(d_old)
     except AttributeError as e:
         print(str(e) + f_old)
     try:
-        params_new, data_new = parsuj_warstwy(d_new)
+        params_new, data_new = parsuj_dane(d_new)
     except AttributeError as e:
         print(str(e) + f_new)
     data_old_dict = warstwy_dane_slownik(data_old)

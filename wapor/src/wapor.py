@@ -3,37 +3,6 @@ from collections import defaultdict
 from copy import deepcopy
 
 
-def wczytaj_warstwy(filename):
-    """
-    Wczytwanie plików z formatu tekstowego dla wielu warstw do postaci listy
-    :param filename:
-    :return:
-    """
-    with open(filename, 'r') as infile:
-        file_data = [i.strip() for i in infile.readlines()]
-    infile.close()
-    return file_data
-
-
-def parsuj_warstwy(warstwy):
-    """
-    Przetworzenie wczytanych warstw do postaci dwóch zbiorów,
-    pierwszy zawiera parametry, natomiast drugi dane
-    :param warstwy:
-    :return:
-    """
-    indeks = 0
-    for nr, d in enumerate(warstwy):
-        if d == '****':
-            indeks = nr + 1
-    if indeks == 0:
-        raise ValueError('Podano błędne dane do przetworzenia! - plik: ')
-    warstwy_param = warstwy[0:indeks]
-    warstwy_data = warstwy[indeks:]
-    warstwy_data.insert(0, '**') # uzpelnienie wartosci bazowej dla listy
-    return warstwy_param, warstwy_data
-
-
 def warstwy_dane_slownik(warstwy_dane):
     data = defaultdict(list)
     for nr, row in enumerate(warstwy_dane):

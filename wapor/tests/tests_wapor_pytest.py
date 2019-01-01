@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from wapor.tests.static import SLOWNIK_DATA
+from wapor.tests.static import SLOWNIK_DATA, PARSER_DATA
 from wapor.src.wapor import *
 
-FILE_READ = './_example_data/file_read.txt'
-FILE_READ_EMPTY = './_example_data/file_read_empty.txt'
-FILE_READ_CONTENT = ['it is', 'simple test file', '', 'check']
+
 DATA_OLD = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
                         '5.66443560667665E+0006  7.57924025966969E+0006       0  0.0000 _',
                         '0   20  5.66443560667665E+0006  7.57924025966969E+0006  '
@@ -26,38 +24,8 @@ DATA_NEW = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006 
             'TEST2 23': []}
 CONTENT = ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
            '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']
-PARSER_CONTENT = ['it is', 'example file for', 'parser', '****',
-                  'it divides', 'file for', 'params', '**', 'and data', '**']
-PARSER_CONTENT_ERR = PARSER_CONTENT[0:3] + PARSER_CONTENT[4:]
-PARSER_PARAMS = ['it is', 'example file for', 'parser', '****']
-PARSER_DATA = ['**', 'it divides', 'file for', 'params', '**', 'and data', '**']
 WRITE_DATA = ['to write', '**', 'in a', 'test file', '**']
 PARAMS_DATA = ['it is', 'test data', '****']
-
-
-def test_wczytaj_warstwy():
-    data = wczytaj_warstwy(FILE_READ)
-    assert data == FILE_READ_CONTENT
-
-
-def test_wczytaj_warstwy_empty_file():
-    data = wczytaj_warstwy(FILE_READ_EMPTY)
-    assert data == []
-
-
-def test_parsuj_warstwy_parametry():
-    params, _ = parsuj_warstwy(PARSER_CONTENT)
-    assert params == PARSER_PARAMS
-
-
-def test_parsuj_warstwy_dane():
-    _, data = parsuj_warstwy(PARSER_CONTENT)
-    assert data == PARSER_DATA
-
-
-def test_parsuj_warstwy_err():
-    with pytest.raises(ValueError):
-        params, data = parsuj_warstwy(PARSER_CONTENT_ERR)
 
 
 def test_warstwy_dane_slownik():
