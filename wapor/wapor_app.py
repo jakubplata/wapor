@@ -131,7 +131,7 @@ def main(data_path):
         print('Brak danych dla warstw!!!')
 
     try:
-        dz_por(data_path, out_path)
+        dz_por(data_path, out_path_date)
     except FileNotFoundError:
         print('Brak danych dla dzialek/konturow/uzytkow!!!')
 
