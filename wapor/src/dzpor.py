@@ -2,7 +2,7 @@
 
 
 from collections import defaultdict
-from wapor.src.basic import *
+from .basic import *
 
 
 def punkty_slownik(file_edz, file_acs):
