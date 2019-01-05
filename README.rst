@@ -15,12 +15,25 @@ Folder wejściowy powinien zawierać dwa folder:
 - new
 
 w przypadku porównywania warstw, każdy z katalogów powinien zawierać plik "Warstwy"
+podczas porównania baz działek/konturów/użytków, każdy z katalogów powinien zawierać pliki "Dzialki.edz" oraz "Punkty.acs"
 
-wynikiem działania aplikacji będą dwa pliki:
+wynikiem działania programu będą następujące pliki:
 
-- DODANE.txt
-- USUNIETE.txt
+- Dla warstw:
 
+	- DODANE.txt
+	- USUNIETE.txt
+	
+- Dla działek (zależnie od różnic w danych):
+
+	- PKT_DODANE.txt
+	- PKT_USUNIETE.txt
+	- PKT_ZM_DANE_POD.txt
+	- PKT_ZM_DANE_DOD.txt
+	
+Gdy w podanym katalogu brak będzie wymaganych plików zostanie wyświetlony komunikata o brak danych dla warstw lub dzialek/konturow/uzytkow.
+	
+	
 Sposób użycia z wiersza poleceń::
 	
 	>>>python3 wapor_app.py ./data

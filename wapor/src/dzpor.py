@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-#TODO oprócz porównania warstw dodac mozliwosc porownywania baz dzialek/klasouzytkow
+
 from collections import defaultdict
-from src.basic import *
+from wapor.src.basic import *
 
 
 def punkty_slownik(file_edz, file_acs):
@@ -24,6 +24,29 @@ def punkty_slownik(file_edz, file_acs):
             slownik_pkt[nr_pkt]['dane_pod'] = dane_pod
             slownik_pkt[nr_pkt]['wsp'] = wsp
     return dict(slownik_pkt)
+
+
+def porownaj_dzialki(punkty_old, punkty_new):
+    roznice = {'istnienie_d': [], 'istnienie_u': [], 'dane_pod': [], 'dane_dod': []}
+    for pkt, atr_new in punkty_new.items():
+        try:
+            atr_old = punkty_old[pkt]
+        except KeyError:
+            roznice['istnienie_d'].append(atr_new['wsp'])
+        else:
+            for atr_opis, atr_wartosc in atr_new.items():
+                if atr_opis != 'wsp': # tego atrybutu nie trzeba porownywac, wsp sa w danych podstawowych
+                    atr_old_wartosc = atr_old[atr_opis]
+                    if atr_wartosc != atr_old_wartosc:
+                        roznice[atr_opis].append(atr_new['wsp'])
+    for pkt, atr_old in punkty_old.items():
+        try:
+            _ = punkty_new[pkt]
+        except KeyError:
+            roznice['istnienie_u'].append(atr_old['wsp'])
+    return roznice
+
+
 
 
 

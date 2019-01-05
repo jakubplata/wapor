@@ -74,21 +74,5 @@ def slownik_to_list(data):
     return dane_lista
 
 
-def zapis_danych(filepath, params, data):
-    """
-    Zapis danych do pliku wynikowego zgodnie
-    ze ścieżką podaną przez użytkownika, osobno należy podać
-    parametry warstw oraz dane dla warstw
-    :param filepath:
-    :param params:
-    :param data:
-    :return:
-    """
-    warstwy = params + data
-    with open(filepath, 'w') as outfile:
-        lines = '\n'.join(warstwy)
-        outfile.write(lines)
-    outfile.close()
-
 
 

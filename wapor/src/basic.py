@@ -30,3 +30,20 @@ def parsuj_dane(dane):
     warstwy_data = dane[indeks:]
     warstwy_data.insert(0, '**') # uzpelnienie wartosci bazowej dla listy
     return warstwy_param, warstwy_data
+
+
+def zapis_danych(filepath, params, data):
+    """
+    Zapis danych do pliku wynikowego zgodnie
+    ze ścieżką podaną przez użytkownika, osobno należy podać
+    parametry/naglowek oraz dane
+    :param filepath:
+    :param params:
+    :param data:
+    :return:
+    """
+    dane = params + data
+    with open(filepath, 'w') as outfile:
+        lines = '\n'.join(dane)
+        outfile.write(lines)
+    outfile.close()

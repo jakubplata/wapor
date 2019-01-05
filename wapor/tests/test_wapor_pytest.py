@@ -24,8 +24,7 @@ DATA_NEW = {'TEST 23': ['0   20  5.66444643561727E+0006  7.57924543273049E+0006 
             'TEST2 23': []}
 CONTENT = ['0   20  5.66444643561727E+0006  7.57924543273049E+0006  '
            '5.66444287482708E+0006  7.57925352857065E+0006       0  0.0000 _']
-WRITE_DATA = ['to write', '**', 'in a', 'test file', '**']
-PARAMS_DATA = ['it is', 'test data', '****']
+
 
 
 def test_warstwy_dane_slownik():
@@ -58,11 +57,6 @@ def test_slownik_to_list():
     lista = slownik_to_list(SLOWNIK_DATA)
     assert lista == ['TEST 23', '0 256 532', '0 256 896', '**', 'LINIE 121', '0 456 789', '**']
 
-
-def test_zapis_danych(tmpdir):
-    file = tmpdir.join('ADD.txt')
-    zapis_danych(file.strpath, PARAMS_DATA, WRITE_DATA)
-    assert file.read() == 'it is\ntest data\n****\nto write\n**\nin a\ntest file\n**'
 
 
 
