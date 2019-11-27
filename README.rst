@@ -36,7 +36,7 @@ Gdy w podanym katalogu brak będzie wymaganych plików zostanie wyświetlony kom
 	
 Sposób użycia z wiersza poleceń::
 	
-	>>>python3 wapor_app.py ./data
+	>>>wapor.exe ./data
 
 W przypadku wystąpienia wyjątków, które nie zostały obsłużone
 wszelkie informacje trafią do pliku \*.log
